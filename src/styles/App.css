@@ -1,0 +1,171 @@
+#root {
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	font-family: var(--font-regular);
+}
+
+.header-container {
+	display: flex;
+	align-items: center;
+	order: 2;
+
+	padding: 0.25rem 2rem;
+
+	background: var(--secondary);
+	color: var(--text);
+}
+
+.menu-btn {
+	margin-left: auto;
+	cursor: pointer;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+	background: rgba(0, 0, 0, 0.7);
+	color: rgba(255, 255, 255, 1);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transform: translateX(100%);
+	transition: 0.2s ease-in-out;
+}
+
+.overlay.open {
+	transform: translateX(0);
+}
+
+.menu-close-btn {
+	position: absolute;
+	bottom: 1rem;
+	right: 2rem;
+	background: none;
+	border: none;
+	font-size: 2rem;
+	color: white;
+	cursor: pointer;
+}
+
+nav ul {
+	list-style: none;
+}
+
+nav ul li {
+	margin-bottom: 2rem;
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+}
+
+nav ul li a {
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 2rem;
+	color: var(--text);
+
+	font-family: var(--font-large);
+}
+
+.main-wrapper {
+	flex: 1;
+	order: 1;
+
+	background-color: var(--background);
+	color: var(--text);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 2rem;
+
+	transition: transform 0.2s ease-in-out;
+}
+
+.main-wrapper.blured {
+	filter: blur(5px);
+}
+
+.footer-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 1rem;
+
+	background: var(--secondary);
+	color: var(--text);
+
+	display: none;
+}
+
+@media screen and (min-width: 421px) {
+	.header-container,
+	.main-wrapper {
+		order: initial;
+	}
+
+	.footer-container {
+		display: flex;
+	}
+
+	.menu-close-btn {
+		top: 1rem;
+		bottom: auto;
+	}
+}
+
+@media screen and (min-width: 767px) {
+	/* TODO */
+	/* move menu to top of screen */
+	.menu-btn {
+		display: none;
+	}
+
+	.overlay {
+		transform: translateX(0);
+		height: 4rem;
+		background: none;
+		justify-content: flex-end;
+	}
+
+	nav ul {
+		display: flex;
+		flex-direction: row;
+	}
+
+	nav ul li {
+		margin: 0;
+		margin-right: 2rem;
+		width: 100%;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	nav ul li a {
+		font-size: 1.2rem;
+
+		transition: all 0.2s ease-in-out;
+	}
+
+	nav ul li a:hover {
+		transform: scale(1.1);
+	}
+
+	.menu-close-btn {
+		display: none;
+	}
+}
