@@ -35,7 +35,7 @@
 	width: 100%;
 	height: 100%;
 	z-index: 20;
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.8);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -49,7 +49,7 @@
 
 .menu-close-btn {
 	position: absolute;
-	top: 1rem;
+	bottom: 1rem;
 	right: 2rem;
 	background: none;
 	border: none;
@@ -76,7 +76,7 @@ nav ul li a {
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 2rem;
-	color: var(--text);
+	color: white;
 	font-family: var(--font-large);
 	font-weight: 800;
 	transition: all 0.2s ease-in-out;
@@ -92,7 +92,7 @@ nav ul li a {
 	align-items: center;
 
 	svg {
-		stroke: var(--text);
+		stroke: white;
 	}
 }
 
@@ -695,19 +695,16 @@ nav ul li a {
 
 @media screen and (min-width: 767px) {
 	.header-container {
-		position: inherit;
+		position: initial;
 		height: 4rem;
 		padding: 1rem 2rem;
-		/* bottom: 0;
-	width: 100%;
-	opacity: 0.9;
-	z-index: 20; */
 	}
 	.menu-btn {
 		display: none;
 	}
 
 	.overlay {
+		position: inherit;
 		transform: translateX(0);
 		height: 4rem;
 		background: none;
@@ -719,12 +716,19 @@ nav ul li a {
 	}
 
 	nav ul li {
-		margin: 0 2rem 0 0;
+		margin: 0 1rem 0 0;
 		align-items: center;
 	}
 
 	nav ul li a {
-		font-size: 1.2rem;
+		font-size: 1rem;
+		font-weight: bolder;
+		color: var(--text);
+	}
+
+	.logout__btn > svg,
+	.theme__btn > svg {
+		stroke: var(--text);
 	}
 
 	nav ul li a:hover {
