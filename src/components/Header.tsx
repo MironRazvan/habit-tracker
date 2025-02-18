@@ -7,7 +7,7 @@ import useAuthStore from "../stores/authStore"
 const Header = () => {
 	const { currentTheme, toggleTheme } = useThemeStore()
 	const [isOpen, setIsOpen] = useState(false)
-	const { user, logout } = useAuthStore()
+	const { logout } = useAuthStore()
 
 	useEffect(() => {
 		const root = document.documentElement
