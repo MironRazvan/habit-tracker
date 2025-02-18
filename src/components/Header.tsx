@@ -1,9 +1,18 @@
-import { Menu } from "lucide-react"
+import { LogOut, Menu, Moon, Sun } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import useThemeStore from "../stores/themeStore"
+import useAuthStore from "../stores/authStore"
 
 const Header = () => {
+	const { currentTheme, toggleTheme } = useThemeStore()
 	const [isOpen, setIsOpen] = useState(false)
+	const { user, logout } = useAuthStore()
+
+	useEffect(() => {
+		const root = document.documentElement
+		root.setAttribute("data-theme", currentTheme)
+	}, [currentTheme])
 
 	useEffect(() => {
 		// if (!isOpen) return
@@ -15,6 +24,12 @@ const Header = () => {
 			elem?.classList.remove("blured")
 		}
 	}, [isOpen])
+
+	const handleLogout = () => {
+		// toggleThemeBtn("on")
+		logout()
+		setIsOpen(false)
+	}
 
 	return (
 		<div className="header-container">
@@ -54,6 +69,24 @@ const Header = () => {
 								>
 									Contact
 								</Link>
+							</li>
+							<li>
+								<button className="logout__btn">
+									<LogOut onClick={handleLogout} />
+								</button>
+							</li>
+							<li>
+								<button
+									id="theme__btn"
+									className="theme__btn"
+									onClick={() => toggleTheme()}
+								>
+									{currentTheme === "light" ? (
+										<Moon />
+									) : (
+										<Sun />
+									)}
+								</button>
 							</li>
 						</ul>
 					</nav>
